@@ -22,6 +22,10 @@
 		D36CD92A24F9FA82007F9365 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD92924F9FA82007F9365 /* RxCocoa */; };
 		D36CD92C24F9FF31007F9365 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD92B24F9FF31007F9365 /* BaseViewController.swift */; };
 		D36CD92E24F9FF4D007F9365 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD92D24F9FF4D007F9365 /* BaseViewModel.swift */; };
+		D36CD93124FAC398007F9365 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93024FAC398007F9365 /* Request.swift */; };
+		D36CD93324FAC39E007F9365 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93224FAC39E007F9365 /* RequestError.swift */; };
+		D36CD93524FAC3A5007F9365 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93424FAC3A5007F9365 /* RequestHelper.swift */; };
+		D36CD93724FAC3AE007F9365 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93624FAC3AE007F9365 /* RequestType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		D36CD90324F9D685007F9365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D36CD92B24F9FF31007F9365 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D36CD92D24F9FF4D007F9365 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		D36CD93024FAC398007F9365 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		D36CD93224FAC39E007F9365 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		D36CD93424FAC3A5007F9365 /* RequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
+		D36CD93624FAC3AE007F9365 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +196,7 @@
 		D36CD91424F9D7EC007F9365 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D36CD92F24FAC386007F9365 /* Networking */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -214,6 +223,17 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D36CD92F24FAC386007F9365 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD93024FAC398007F9365 /* Request.swift */,
+				D36CD93224FAC39E007F9365 /* RequestError.swift */,
+				D36CD93424FAC3A5007F9365 /* RequestHelper.swift */,
+				D36CD93624FAC3AE007F9365 /* RequestType.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,11 +380,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36CD93324FAC39E007F9365 /* RequestError.swift in Sources */,
 				D36CD8E424F9D683007F9365 /* ViewController.swift in Sources */,
+				D36CD93124FAC398007F9365 /* Request.swift in Sources */,
 				D36CD92E24F9FF4D007F9365 /* BaseViewModel.swift in Sources */,
 				D36CD92C24F9FF31007F9365 /* BaseViewController.swift in Sources */,
 				D36CD8E024F9D683007F9365 /* AppDelegate.swift in Sources */,
 				D36CD8E224F9D683007F9365 /* SceneDelegate.swift in Sources */,
+				D36CD93524FAC3A5007F9365 /* RequestHelper.swift in Sources */,
+				D36CD93724FAC3AE007F9365 /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
