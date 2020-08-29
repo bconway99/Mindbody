@@ -29,7 +29,6 @@ class CountriesViewModel: BaseViewModel {
     
     /// Fetches the list of Mindbody countries from the API endpoint.
     func fetchCountries() {
-        
         // HandyNetworking is a class that I wrote within my personal Swift Package called Handy.
         // I created it with the purpose of sharing utility methods across my projects.
         let url = HandyNetworking.createPath(
@@ -43,7 +42,7 @@ class CountriesViewModel: BaseViewModel {
             switch success {
                 
             case true:
-                if let json = json, let countries = Mapper<Country>().mapArray(JSONObject: json) {
+                if let json = json, let countries = Mapper<Country>().mapArray(JSONObject: json), countries.count > 0 {
                     self?.delegate?.didLoad(with: countries)
                 } else {
                     self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))

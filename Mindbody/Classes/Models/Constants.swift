@@ -17,6 +17,7 @@ class Constants: NSObject {
         static let domain: String = "connect.mindbodyonline.com%@"
         class Endpoints {
             static let countries: String = "/rest/worldregions/country"
+            static let provinces: String = "/rest/worldregions/country/%@/province"
         }
     }
     

@@ -30,5 +30,35 @@ class CountryDetailsViewModel: BaseViewModel {
     
     /// Fetches the list of Mindbody provinces from the API endpoint.
     func fetchProvinces() {
+        guard let countryID = country?.id else {
+            delegate?.didLoad(with: RequestError(title: "Error", message: "Invalid country object!"))
+            return
+        }
+                
+        // HandyNetworking is a class that I wrote within my personal Swift Package called Handy.
+        // I created it with the purpose of sharing utility methods across my projects.
+        let url = HandyNetworking.createPath(
+            domain: Constants.MindbodyAPI.domain,
+            endpoint: String(format: Constants.MindbodyAPI.Endpoints.provinces, "\(countryID)"),
+            isSecure: true
+        )
+        
+        let request = Request(type: .get, url: url)
+        RequestHelper.addRequest(request: request) { [weak self] (success: Bool, json: Any?, error: Error?) in
+            switch success {
+                
+            case true:
+                if let json = json, let provinces = Mapper<Province>().mapArray(JSONObject: json), provinces.count > 0 {
+                    self?.delegate?.didLoad(with: provinces)
+                } else {
+                    self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
+                }
+                break
+                
+            case false:
+                self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
+                break
+            }
+        }
     }
 }
