@@ -30,8 +30,8 @@ class CountriesViewController: BaseViewController {
 extension CountriesViewController {
     
     override func setupAccessibility() {
-        countriesTable?.accessibilityIdentifier = AccessibilityIdentifiers.CountriesViewController.countriesTable
-        refreshControl?.accessibilityIdentifier = AccessibilityIdentifiers.CountriesViewController.refreshControl
+        countriesTable?.accessibilityIdentifier = Constants.AccessibilityIdentifiers.CountriesViewController.countriesTable
+        refreshControl?.accessibilityIdentifier = Constants.AccessibilityIdentifiers.CountriesViewController.refreshControl
     }
     
     override func setupObservers() {

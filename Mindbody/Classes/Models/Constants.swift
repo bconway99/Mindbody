@@ -8,14 +8,25 @@
 
 import Foundation
 
-class Constants: NSObject {}
-
-// MARK: - AccessibilityIdentifiers
-
-class AccessibilityIdentifiers {
+class Constants: NSObject {
     
-    class CountriesViewController {
-        static let countriesTable: String = "CountriesTable"
-        static let refreshControl: String = "RefreshControl"
+    // MARK: - AccessibilityIdentifiers
+
+    class MindbodyAPI {
+
+        static let domain: String = "connect.mindbodyonline.com%@"
+        class Endpoints {
+            static let countries: String = "/rest/worldregions/country"
+        }
+    }
+
+    // MARK: - AccessibilityIdentifiers
+
+    class AccessibilityIdentifiers {
+        
+        class CountriesViewController {
+            static let countriesTable: String = "CountriesTable"
+            static let refreshControl: String = "RefreshControl"
+        }
     }
 }

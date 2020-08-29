@@ -12,6 +12,7 @@ class BaseViewModel: NSObject {
         
     // Add here any base logic setup.
     // Or protocols that we want all view models to comply to.
+    // These can include sending analytics events, accessibility logic, etc.
 }
 
 // MARK: - Base Implementation
