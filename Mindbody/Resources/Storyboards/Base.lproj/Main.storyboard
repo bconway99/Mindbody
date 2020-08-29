@@ -23,24 +23,52 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="17F-lb-52N"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS6-UH-Z1O">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xC9-cL-c82"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="Countries" id="NaH-sf-WR7"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="vSU-AC-nDl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ac8-Vb-Caj"/>
-                            <constraint firstItem="vSU-AC-nDl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kG3-9T-87c"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vSU-AC-nDl" secondAttribute="trailing" id="pSc-vq-HCR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vSU-AC-nDl" secondAttribute="bottom" id="wiC-6l-9nR"/>
+                            <constraint firstItem="vSU-AC-nDl" firstAttribute="top" secondItem="mS6-UH-Z1O" secondAttribute="bottom" id="4xi-ru-BTR"/>
+                            <constraint firstItem="vSU-AC-nDl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RE5-nr-1Rj"/>
+                            <constraint firstItem="mS6-UH-Z1O" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TEB-JZ-BPM"/>
+                            <constraint firstItem="mS6-UH-Z1O" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gLq-xg-gVg"/>
+                            <constraint firstItem="mS6-UH-Z1O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="j2m-rm-8Bb"/>
+                            <constraint firstItem="vSU-AC-nDl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="pOg-Ke-a5G"/>
+                            <constraint firstItem="vSU-AC-nDl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yrO-9h-zm6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="countriesTable" destination="vSU-AC-nDl" id="Uyp-wM-QSv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="98"/>
+            <point key="canvasLocation" x="138.75" y="97.5"/>
+        </scene>
+        <!--Country Details View Controller-->
+        <scene sceneID="0VH-P5-L6Y">
+            <objects>
+                <viewController storyboardIdentifier="CountryDetailsViewController" id="YeS-51-Dgn" customClass="CountryDetailsViewController" customModule="Mindbody" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jLO-ju-hjM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="YcH-QY-ind"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5W-hR-Jej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="840" y="98"/>
         </scene>
     </scenes>
 </document>

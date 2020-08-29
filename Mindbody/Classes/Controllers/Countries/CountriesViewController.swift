@@ -56,6 +56,7 @@ extension CountriesViewController: CountriesViewModelDelegate {
     }
     
     func didLoad(with error: RequestError?) {
+        // TODO: Show alert error.
     }
 }
 
@@ -103,5 +104,18 @@ extension CountriesViewController: UITableViewDataSource, UITableViewDelegate {
         let country = theCountries.value[indexPath.row]
         cell.configure(with: country)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < theCountries.value.count else {
+            // TODO: Show alert error.
+            return
+        }
+        let viewModel = CountryDetailsViewModel()
+        viewModel.country = theCountries.value[indexPath.row]
+        if let viewController = storyboard?.instantiateViewController(withIdentifier: "CountryDetailsViewController") as? CountryDetailsViewController {
+            viewController.viewModel = viewModel
+            present(viewController, animated: true, completion: nil)
+        }
     }
 }
