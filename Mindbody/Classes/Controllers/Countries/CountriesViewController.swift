@@ -10,7 +10,8 @@ import UIKit
 
 class CountriesViewController: BaseViewController {
     
-    private let viewModel = CountriesViewModel()
+    let viewModel = CountriesViewModel()
+    var theCountries: [Country]?
     
     var refreshControl: UIRefreshControl?
     @IBOutlet weak var countriesTable: UITableView?
@@ -20,8 +21,14 @@ class CountriesViewController: BaseViewController {
         viewModel.setup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.fetchCountries()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        countriesTable?.reloadData()
     }
 }
 
@@ -41,7 +48,28 @@ extension CountriesViewController {
 // MARK: - CountriesViewModelDelegate
 
 extension CountriesViewController: CountriesViewModelDelegate {
+
+    func didLoad(with countries: [Country]) {
+        theCountries = countries
+    }
     
-    func didLoad(data: Any) {
+    func didLoad(with error: RequestError?) {
+    }
+}
+
+// MARK: - UITableViewDataSource & UITableViewDelegate
+
+extension CountriesViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40.0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }

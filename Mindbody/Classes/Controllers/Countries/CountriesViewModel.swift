@@ -7,12 +7,16 @@
 //
 
 import Foundation
+import ObjectMapper
 import Handy
 
 protocol CountriesViewModelDelegate: class {
     
-    /// Called when the required data for the view controller has finished loading.
-    func didLoad(data: Any)
+    /// Called when the network call has returned successfully with the `country` objects.
+    func didLoad(with countries: [Country])
+    
+    /// Called when the network call has failed.
+    func didLoad(with error: RequestError?)
 }
 
 class CountriesViewModel: BaseViewModel {
@@ -35,13 +39,19 @@ class CountriesViewModel: BaseViewModel {
         )
         
         let request = Request(type: .get, url: url)
-        RequestHelper.addRequest(request: request) { [weak self] (success: Bool, json: [String : Any]?, error: Error?) in
+        RequestHelper.addRequest(request: request) { [weak self] (success: Bool, json: Any?, error: Error?) in
             switch success {
                 
             case true:
+                if let json = json, let countries = Mapper<Country>().mapArray(JSONObject: json) {
+                    self?.delegate?.didLoad(with: countries)
+                } else {
+                    self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
+                }
                 break
                 
             case false:
+                self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
                 break
             }
         }

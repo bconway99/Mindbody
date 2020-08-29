@@ -12,7 +12,7 @@ import Handy
 
 class RequestHelper: NSObject {
 
-    typealias CompletionHandler = (_ success: Bool, _ json: [String: Any]?, _ error: RequestError?) -> Void
+    typealias CompletionHandler = (_ success: Bool, _ json: Any?, _ error: RequestError?) -> Void
 
     /// Checks if the device has a network connection and then passes on the request to the appropriate HTTP method.
     /// - Parameters:
@@ -21,12 +21,16 @@ class RequestHelper: NSObject {
     ///   - completion: The completion block to return to the delegate class.
     static func addRequest(request: Request, completion: @escaping CompletionHandler) {
         guard HandyNetworking.isConnected() else {
+            // These strings would usually be added to a separate strings class.
+            // So that we can localize languages far more easily.
             let error = RequestError(title: "Error", message: "No internet connection!")
             completion(false, nil, error)
             return
         }
 
         guard let type = request.type, request.url != nil else {
+            // These strings would usually be added to a separate strings class.
+            // So that we can localize languages far more easily.
             let error = RequestError(title: "Error", message: "Invalid request!")
             completion(false, nil, error)
             return
@@ -50,7 +54,7 @@ class RequestHelper: NSObject {
         switch response.result {
             
         case .success(_):
-            if let json = response.value as? [String: Any] {
+            if let json = response.value {
                 completion(true, json, nil)
             } else {
                 let error = RequestError(title: "Error", message: "Failed request!")
@@ -59,7 +63,7 @@ class RequestHelper: NSObject {
             
         case .failure(_):
             let error = RequestError(title: "Error", message: "Failed request!")
-            completion(false, nil, error)
+            completion(false, nil, RequestError(title: "Error", message: "Failed request!"))
         }
     }
 }

@@ -28,6 +28,7 @@
 		D36CD93A24FAC54D007F9365 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93924FAC54D007F9365 /* CountriesViewController.swift */; };
 		D36CD93C24FAC557007F9365 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93B24FAC557007F9365 /* CountriesViewModel.swift */; };
 		D36CD93E24FACA9B007F9365 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93D24FACA9B007F9365 /* Constants.swift */; };
+		D36CD94224FAE57A007F9365 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD94124FAE57A007F9365 /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		D36CD93924FAC54D007F9365 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
 		D36CD93B24FAC557007F9365 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
 		D36CD93D24FACA9B007F9365 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D36CD94124FAE57A007F9365 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 		D36CD91624F9D7F5007F9365 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D36CD93F24FAE544007F9365 /* Objects */,
 				D36CD93D24FACA9B007F9365 /* Constants.swift */,
 			);
 			path = Models;
@@ -248,6 +251,22 @@
 				D36CD93B24FAC557007F9365 /* CountriesViewModel.swift */,
 			);
 			path = Countries;
+			sourceTree = "<group>";
+		};
+		D36CD93F24FAE544007F9365 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD94024FAE55B007F9365 /* Mindbody */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		D36CD94024FAE55B007F9365 /* Mindbody */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD94124FAE57A007F9365 /* Country.swift */,
+			);
+			path = Mindbody;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +417,7 @@
 				D36CD93E24FACA9B007F9365 /* Constants.swift in Sources */,
 				D36CD93124FAC398007F9365 /* Request.swift in Sources */,
 				D36CD92E24F9FF4D007F9365 /* BaseViewModel.swift in Sources */,
+				D36CD94224FAE57A007F9365 /* Country.swift in Sources */,
 				D36CD93C24FAC557007F9365 /* CountriesViewModel.swift in Sources */,
 				D36CD92C24F9FF31007F9365 /* BaseViewController.swift in Sources */,
 				D36CD8E024F9D683007F9365 /* AppDelegate.swift in Sources */,
