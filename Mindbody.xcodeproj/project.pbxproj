@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D36CD8E024F9D683007F9365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD8DF24F9D683007F9365 /* AppDelegate.swift */; };
 		D36CD8E224F9D683007F9365 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD8E124F9D683007F9365 /* SceneDelegate.swift */; };
-		D36CD8E424F9D683007F9365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD8E324F9D683007F9365 /* ViewController.swift */; };
 		D36CD8E724F9D683007F9365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D36CD8E524F9D683007F9365 /* Main.storyboard */; };
 		D36CD8E924F9D685007F9365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36CD8E824F9D685007F9365 /* Assets.xcassets */; };
 		D36CD8EC24F9D685007F9365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D36CD8EA24F9D685007F9365 /* LaunchScreen.storyboard */; };
@@ -26,6 +25,9 @@
 		D36CD93324FAC39E007F9365 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93224FAC39E007F9365 /* RequestError.swift */; };
 		D36CD93524FAC3A5007F9365 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93424FAC3A5007F9365 /* RequestHelper.swift */; };
 		D36CD93724FAC3AE007F9365 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93624FAC3AE007F9365 /* RequestType.swift */; };
+		D36CD93A24FAC54D007F9365 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93924FAC54D007F9365 /* CountriesViewController.swift */; };
+		D36CD93C24FAC557007F9365 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93B24FAC557007F9365 /* CountriesViewModel.swift */; };
+		D36CD93E24FACA9B007F9365 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD93D24FACA9B007F9365 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +51,6 @@
 		D36CD8DC24F9D683007F9365 /* Mindbody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mindbody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36CD8DF24F9D683007F9365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D36CD8E124F9D683007F9365 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D36CD8E324F9D683007F9365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D36CD8E624F9D683007F9365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D36CD8E824F9D685007F9365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D36CD8EB24F9D685007F9365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,6 +67,9 @@
 		D36CD93224FAC39E007F9365 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		D36CD93424FAC3A5007F9365 /* RequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
 		D36CD93624FAC3AE007F9365 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		D36CD93924FAC54D007F9365 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		D36CD93B24FAC557007F9365 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
+		D36CD93D24FACA9B007F9365 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,7 @@
 		D36CD91624F9D7F5007F9365 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D36CD93D24FACA9B007F9365 /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,7 +218,7 @@
 			children = (
 				D36CD92B24F9FF31007F9365 /* BaseViewController.swift */,
 				D36CD92D24F9FF4D007F9365 /* BaseViewModel.swift */,
-				D36CD8E324F9D683007F9365 /* ViewController.swift */,
+				D36CD93824FAC535007F9365 /* Countries */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -234,6 +239,15 @@
 				D36CD93624FAC3AE007F9365 /* RequestType.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		D36CD93824FAC535007F9365 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD93924FAC54D007F9365 /* CountriesViewController.swift */,
+				D36CD93B24FAC557007F9365 /* CountriesViewModel.swift */,
+			);
+			path = Countries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,11 +395,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36CD93324FAC39E007F9365 /* RequestError.swift in Sources */,
-				D36CD8E424F9D683007F9365 /* ViewController.swift in Sources */,
+				D36CD93E24FACA9B007F9365 /* Constants.swift in Sources */,
 				D36CD93124FAC398007F9365 /* Request.swift in Sources */,
 				D36CD92E24F9FF4D007F9365 /* BaseViewModel.swift in Sources */,
+				D36CD93C24FAC557007F9365 /* CountriesViewModel.swift in Sources */,
 				D36CD92C24F9FF31007F9365 /* BaseViewController.swift in Sources */,
 				D36CD8E024F9D683007F9365 /* AppDelegate.swift in Sources */,
+				D36CD93A24FAC54D007F9365 /* CountriesViewController.swift in Sources */,
 				D36CD8E224F9D683007F9365 /* SceneDelegate.swift in Sources */,
 				D36CD93524FAC3A5007F9365 /* RequestHelper.swift in Sources */,
 				D36CD93724FAC3AE007F9365 /* RequestType.swift in Sources */,
