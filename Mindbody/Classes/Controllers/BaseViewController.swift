@@ -13,7 +13,7 @@ class BaseViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    @IBOutlet weak var navBar: UINavigationItem?
+    @IBOutlet weak var navigationBar: UINavigationItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()

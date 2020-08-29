@@ -17,7 +17,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vSU-AC-nDl">
                                 <rect key="frame" x="0.0" y="44" width="320" height="436"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="HDa-X6-abv"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="17F-lb-52N"/>
@@ -49,6 +49,7 @@
                     </view>
                     <connections>
                         <outlet property="countriesTable" destination="vSU-AC-nDl" id="Uyp-wM-QSv"/>
+                        <outlet property="navigationBar" destination="NaH-sf-WR7" id="Fu0-0g-Kgq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -62,9 +63,48 @@
                     <view key="view" contentMode="scaleToFill" id="jLO-ju-hjM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0V-E5-rk6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="iRf-ea-TfB"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="1IO-jt-Ktz">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" id="qzH-2S-2NL">
+                                            <connections>
+                                                <action selector="backButtonPressed:" destination="YeS-51-Dgn" id="dY9-Fn-VIs"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Ou-vt-v1S">
+                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YeS-51-Dgn" id="y3J-aT-tEo"/>
+                                    <outlet property="delegate" destination="YeS-51-Dgn" id="oDO-it-Nkl"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8Ou-vt-v1S" firstAttribute="leading" secondItem="YcH-QY-ind" secondAttribute="leading" id="2SN-m4-rfb"/>
+                            <constraint firstItem="YcH-QY-ind" firstAttribute="trailing" secondItem="8Ou-vt-v1S" secondAttribute="trailing" id="Dbm-FF-hx2"/>
+                            <constraint firstItem="R0V-E5-rk6" firstAttribute="top" secondItem="YcH-QY-ind" secondAttribute="top" id="JRa-VR-sMh"/>
+                            <constraint firstItem="8Ou-vt-v1S" firstAttribute="top" secondItem="R0V-E5-rk6" secondAttribute="bottom" id="gdU-GW-15L"/>
+                            <constraint firstItem="YcH-QY-ind" firstAttribute="bottom" secondItem="8Ou-vt-v1S" secondAttribute="bottom" id="izk-XI-fUP"/>
+                            <constraint firstItem="R0V-E5-rk6" firstAttribute="trailing" secondItem="YcH-QY-ind" secondAttribute="trailing" id="ujL-SG-m2o"/>
+                            <constraint firstItem="R0V-E5-rk6" firstAttribute="leading" secondItem="YcH-QY-ind" secondAttribute="leading" id="yk1-n3-Tlt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YcH-QY-ind"/>
                     </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="1IO-jt-Ktz" id="qdl-sK-0EP"/>
+                        <outlet property="provincesTable" destination="8Ou-vt-v1S" id="mim-td-e9E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5W-hR-Jej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
