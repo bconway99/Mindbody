@@ -99,13 +99,8 @@
 		D36CD8DE24F9D683007F9365 /* Mindbody */ = {
 			isa = PBXGroup;
 			children = (
-				D36CD8DF24F9D683007F9365 /* AppDelegate.swift */,
-				D36CD8E124F9D683007F9365 /* SceneDelegate.swift */,
-				D36CD8E324F9D683007F9365 /* ViewController.swift */,
-				D36CD8E524F9D683007F9365 /* Main.storyboard */,
-				D36CD8E824F9D685007F9365 /* Assets.xcassets */,
-				D36CD8EA24F9D685007F9365 /* LaunchScreen.storyboard */,
-				D36CD8ED24F9D685007F9365 /* Info.plist */,
+				D36CD90F24F9D75C007F9365 /* Classes */,
+				D36CD91024F9D76C007F9365 /* Resources */,
 			);
 			path = Mindbody;
 			sourceTree = "<group>";
@@ -126,6 +121,83 @@
 				D36CD90324F9D685007F9365 /* Info.plist */,
 			);
 			path = MindbodyUITests;
+			sourceTree = "<group>";
+		};
+		D36CD90F24F9D75C007F9365 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD91724F9D7FB007F9365 /* Controllers */,
+				D36CD91624F9D7F5007F9365 /* Models */,
+				D36CD91424F9D7EC007F9365 /* Services */,
+				D36CD91824F9D806007F9365 /* Views */,
+				D36CD8DF24F9D683007F9365 /* AppDelegate.swift */,
+				D36CD8E124F9D683007F9365 /* SceneDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D36CD91024F9D76C007F9365 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD91124F9D782007F9365 /* Assets */,
+				D36CD91324F9D7AB007F9365 /* Configuration */,
+				D36CD91224F9D78F007F9365 /* Storyboards */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D36CD91124F9D782007F9365 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD8E824F9D685007F9365 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		D36CD91224F9D78F007F9365 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD8EA24F9D685007F9365 /* LaunchScreen.storyboard */,
+				D36CD8E524F9D683007F9365 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D36CD91324F9D7AB007F9365 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD8ED24F9D685007F9365 /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		D36CD91424F9D7EC007F9365 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D36CD91624F9D7F5007F9365 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D36CD91724F9D7FB007F9365 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD8E324F9D683007F9365 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D36CD91824F9D806007F9365 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,7 +508,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9B853DWD5K;
-				INFOPLIST_FILE = Mindbody/Info.plist;
+				INFOPLIST_FILE = Mindbody/Resources/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,7 +526,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9B853DWD5K;
-				INFOPLIST_FILE = Mindbody/Info.plist;
+				INFOPLIST_FILE = Mindbody/Resources/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
