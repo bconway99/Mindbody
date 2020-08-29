@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,11 @@
 		D36CD8EC24F9D685007F9365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D36CD8EA24F9D685007F9365 /* LaunchScreen.storyboard */; };
 		D36CD8F724F9D685007F9365 /* MindbodyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD8F624F9D685007F9365 /* MindbodyTests.swift */; };
 		D36CD90224F9D685007F9365 /* MindbodyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD90124F9D685007F9365 /* MindbodyUITests.swift */; };
+		D36CD91F24F9FA25007F9365 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD91E24F9FA25007F9365 /* Alamofire */; };
+		D36CD92224F9FA30007F9365 /* Handy in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD92124F9FA30007F9365 /* Handy */; };
+		D36CD92524F9FA4E007F9365 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD92424F9FA4E007F9365 /* ObjectMapper */; };
+		D36CD92824F9FA82007F9365 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD92724F9FA82007F9365 /* RxSwift */; };
+		D36CD92A24F9FA82007F9365 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD92924F9FA82007F9365 /* RxCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36CD92524F9FA4E007F9365 /* ObjectMapper in Frameworks */,
+				D36CD91F24F9FA25007F9365 /* Alamofire in Frameworks */,
+				D36CD92A24F9FA82007F9365 /* RxCocoa in Frameworks */,
+				D36CD92824F9FA82007F9365 /* RxSwift in Frameworks */,
+				D36CD92224F9FA30007F9365 /* Handy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +226,13 @@
 			dependencies = (
 			);
 			name = Mindbody;
+			packageProductDependencies = (
+				D36CD91E24F9FA25007F9365 /* Alamofire */,
+				D36CD92124F9FA30007F9365 /* Handy */,
+				D36CD92424F9FA4E007F9365 /* ObjectMapper */,
+				D36CD92724F9FA82007F9365 /* RxSwift */,
+				D36CD92924F9FA82007F9365 /* RxCocoa */,
+			);
 			productName = Mindbody;
 			productReference = D36CD8DC24F9D683007F9365 /* Mindbody.app */;
 			productType = "com.apple.product-type.application";
@@ -288,6 +305,12 @@
 				Base,
 			);
 			mainGroup = D36CD8D324F9D683007F9365;
+			packageReferences = (
+				D36CD91D24F9FA25007F9365 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				D36CD92024F9FA30007F9365 /* XCRemoteSwiftPackageReference "handy" */,
+				D36CD92324F9FA4E007F9365 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				D36CD92624F9FA82007F9365 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = D36CD8DD24F9D683007F9365 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -662,6 +685,69 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D36CD91D24F9FA25007F9365 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
+		D36CD92024F9FA30007F9365 /* XCRemoteSwiftPackageReference "handy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://bconway99@bitbucket.org/bconway99/handy.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.9;
+			};
+		};
+		D36CD92324F9FA4E007F9365 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		D36CD92624F9FA82007F9365 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D36CD91E24F9FA25007F9365 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D36CD91D24F9FA25007F9365 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		D36CD92124F9FA30007F9365 /* Handy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D36CD92024F9FA30007F9365 /* XCRemoteSwiftPackageReference "handy" */;
+			productName = Handy;
+		};
+		D36CD92424F9FA4E007F9365 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D36CD92324F9FA4E007F9365 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+		D36CD92724F9FA82007F9365 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D36CD92624F9FA82007F9365 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		D36CD92924F9FA82007F9365 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D36CD92624F9FA82007F9365 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D36CD8D424F9D683007F9365 /* Project object */;
 }
