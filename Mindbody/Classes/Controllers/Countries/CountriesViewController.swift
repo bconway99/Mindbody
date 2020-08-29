@@ -33,6 +33,9 @@ extension CountriesViewController {
         countriesTable?.accessibilityIdentifier = AccessibilityIdentifiers.CountriesViewController.countriesTable
         refreshControl?.accessibilityIdentifier = AccessibilityIdentifiers.CountriesViewController.refreshControl
     }
+    
+    override func setupObservers() {
+    }
 }
 
 // MARK: - CountriesViewModelDelegate
