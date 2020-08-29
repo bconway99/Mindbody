@@ -7,28 +7,22 @@
 //
 
 import UIKit
+import RxCocoa
 
 class CountriesViewController: BaseViewController {
     
     let viewModel = CountriesViewModel()
-    var theCountries: [Country]?
-    
+    var theCountries: BehaviorRelay<[Country]> = BehaviorRelay(value: [])
+
     var refreshControl: UIRefreshControl?
     @IBOutlet weak var countriesTable: UITableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTable()
+        viewModel.delegate = self
         viewModel.setup()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         viewModel.fetchCountries()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        countriesTable?.reloadData()
     }
 }
 
@@ -42,6 +36,14 @@ extension CountriesViewController {
     }
     
     override func setupObservers() {
+        // Clears the countries array before setting it up as an observable.
+        theCountries.accept([])
+        // Sets up the countries array as an RxSwift observable.
+        // Along with a completion block that executes whenever this object changes.
+        theCountries.asObservable().subscribe(onNext: { [weak self] items in
+            self?.countriesTable?.reloadData()
+            self?.refreshControl?.endRefreshing()
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -50,10 +52,32 @@ extension CountriesViewController {
 extension CountriesViewController: CountriesViewModelDelegate {
 
     func didLoad(with countries: [Country]) {
-        theCountries = countries
+        theCountries.accept(countries)
     }
     
     func didLoad(with error: RequestError?) {
+    }
+}
+
+// MARK: - UI
+
+extension CountriesViewController {
+    
+    func setupTable() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshPulled), for: .valueChanged)
+        if let refresh = refreshControl { countriesTable?.addSubview(refresh) }
+        countriesTable?.separatorStyle = .singleLine
+        countriesTable?.register(UINib(nibName: CountryCell.className, bundle: nil), forCellReuseIdentifier: CountryCell.identifier)
+    }
+}
+
+// MARK: - Actions
+
+extension CountriesViewController {
+    
+    @objc func refreshPulled() {
+        viewModel.fetchCountries()
     }
 }
 
@@ -62,14 +86,22 @@ extension CountriesViewController: CountriesViewModelDelegate {
 extension CountriesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40.0
+        return CountryCell.height
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        guard theCountries.value.count > 0 else { return 0 }
+        return theCountries.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard
+            indexPath.row < theCountries.value.count,
+            let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.identifier, for: indexPath) as? CountryCell else {
+            return UITableViewCell()
+        }
+        let country = theCountries.value[indexPath.row]
+        cell.configure(with: country)
+        return cell
     }
 }

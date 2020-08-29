@@ -10,7 +10,7 @@ import Foundation
 
 class Constants: NSObject {
     
-    // MARK: - AccessibilityIdentifiers
+    // MARK: - MindbodyAPI
 
     class MindbodyAPI {
 
@@ -19,9 +19,17 @@ class Constants: NSObject {
             static let countries: String = "/rest/worldregions/country"
         }
     }
+    
+    // MARK: - CountryFlags
 
-    // MARK: - AccessibilityIdentifiers
+    class CountryFlags {
 
+        static let domain: String = "https://www.countryflags.io/%@"
+        class Endpoints {
+            static let flag: String = "/%@/shiny/64.png"
+        }
+    }
+    
     class AccessibilityIdentifiers {
         
         class CountriesViewController {
