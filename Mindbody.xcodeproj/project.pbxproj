@@ -20,6 +20,8 @@
 		D36CD92524F9FA4E007F9365 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD92424F9FA4E007F9365 /* ObjectMapper */; };
 		D36CD92824F9FA82007F9365 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD92724F9FA82007F9365 /* RxSwift */; };
 		D36CD92A24F9FA82007F9365 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D36CD92924F9FA82007F9365 /* RxCocoa */; };
+		D36CD92C24F9FF31007F9365 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD92B24F9FF31007F9365 /* BaseViewController.swift */; };
+		D36CD92E24F9FF4D007F9365 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD92D24F9FF4D007F9365 /* BaseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		D36CD8FD24F9D685007F9365 /* MindbodyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MindbodyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36CD90124F9D685007F9365 /* MindbodyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindbodyUITests.swift; sourceTree = "<group>"; };
 		D36CD90324F9D685007F9365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D36CD92B24F9FF31007F9365 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D36CD92D24F9FF4D007F9365 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,8 @@
 		D36CD91724F9D7FB007F9365 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D36CD92B24F9FF31007F9365 /* BaseViewController.swift */,
+				D36CD92D24F9FF4D007F9365 /* BaseViewModel.swift */,
 				D36CD8E324F9D683007F9365 /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -355,6 +361,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36CD8E424F9D683007F9365 /* ViewController.swift in Sources */,
+				D36CD92E24F9FF4D007F9365 /* BaseViewModel.swift in Sources */,
+				D36CD92C24F9FF31007F9365 /* BaseViewController.swift in Sources */,
 				D36CD8E024F9D683007F9365 /* AppDelegate.swift in Sources */,
 				D36CD8E224F9D683007F9365 /* SceneDelegate.swift in Sources */,
 			);
