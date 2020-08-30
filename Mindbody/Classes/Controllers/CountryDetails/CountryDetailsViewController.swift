@@ -32,9 +32,9 @@ class CountryDetailsViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if
-            let name = viewModel?.country?.name?.capitalized,
-            let code = viewModel?.country?.code {
-            let address = String(format: "%@, %@", name, code)
+            let countryName = viewModel?.country?.name?.capitalized,
+            let countryCode = viewModel?.country?.code {
+            let address = String(format: "%@ %@", countryName, countryCode)
             getCoordinate(for: address)
         }
     }
@@ -125,6 +125,21 @@ extension CountryDetailsViewController: UITableViewDataSource, UITableViewDelega
         cell.configure(with: province)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < theProvinces.value.count else {
+            // TODO: Show alert error.
+            return
+        }
+        let province = theProvinces.value[indexPath.row]
+        if
+            let provinceName = province.name,
+            let countryName = viewModel?.country?.name?.capitalized,
+            let countryCode = viewModel?.country?.code {
+            let address = String(format: "%@ %@ %@", provinceName, countryName, countryCode)
+            getCoordinate(for: address)
+        }
+    }
 }
 
 // MARK: - Map
@@ -135,6 +150,7 @@ extension CountryDetailsViewController {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { [weak self] (placemarks, error) in
             guard let placemarks = placemarks, let location = placemarks.first?.location else {
+                // TODO: Show alert error.
                 return
             }
             self?.configureMap(with: location)
