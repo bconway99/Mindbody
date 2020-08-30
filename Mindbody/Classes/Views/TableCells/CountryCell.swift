@@ -36,7 +36,7 @@ extension CountryCell {
         let flagEndpoint = String(format: Constants.CountryFlags.Endpoints.flag, code)
         let flagURL = URL(string: String(format: Constants.CountryFlags.domain, flagEndpoint))
         // As part of the SDWebImage framework I could add a placeholder image until the target image is loaded.
-        // Here in a production project I would leverage improved thread management.
+        // In a production project I would leverage improved thread management here.
         // Images should be loaded on a background thread and then the UI updated on the main thread.
         imageView?.sd_setImage(
             with: flagURL,
