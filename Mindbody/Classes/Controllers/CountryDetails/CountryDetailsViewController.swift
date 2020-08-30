@@ -66,6 +66,8 @@ extension CountryDetailsViewController {
 extension CountryDetailsViewController: CountryDetailsViewModelDelegate {
 
     func didLoad(with provinces: [Province]) {
+        provincesTable?.stopLoading()
+        mapView?.stopLoading()
         guard provinces.count > 0 else {
             let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
                 self?.viewModel?.fetchProvinces()
@@ -77,6 +79,8 @@ extension CountryDetailsViewController: CountryDetailsViewModelDelegate {
     }
     
     func didLoad(with error: RequestError?) {
+        provincesTable?.stopLoading()
+        mapView?.stopLoading()
         let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
             self?.viewModel?.fetchProvinces()
         }
@@ -94,12 +98,14 @@ extension CountryDetailsViewController {
         if let refresh = refreshControl { provincesTable?.addSubview(refresh) }
         provincesTable?.separatorStyle = .singleLine
         provincesTable?.register(UINib(nibName: ProvinceCell.className, bundle: nil), forCellReuseIdentifier: ProvinceCell.identifier)
+        provincesTable?.showLoading(color: .gray, scale: 3.0)
     }
     
     func setupMapView() {
         mapView?.isZoomEnabled = false
         mapView?.isScrollEnabled = false
         mapView?.isUserInteractionEnabled = false
+        mapView?.showLoading(color: .gray, scale: 2.0)
     }
 }
 
