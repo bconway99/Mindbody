@@ -108,7 +108,8 @@ extension CountriesViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let country = theCountries.value[indexPath.row]
-        cell.configure(with: country)
+        cell.delegate = self
+        cell.configure(with: country, row: indexPath.row)
         return cell
     }
     
@@ -126,5 +127,15 @@ extension CountriesViewController: UITableViewDataSource, UITableViewDelegate {
             viewController.viewModel = viewModel
             present(viewController, animated: true, completion: nil)
         }
+    }
+}
+
+// MARK: - CountryCellDelegate
+
+extension CountriesViewController: CountryCellDelegate {
+    
+    func imageLoaded(at row: Int) {
+        let indexPath = IndexPath(row: row, section: 0)
+        countriesTable?.reloadRows(at: [indexPath], with: .automatic)
     }
 }
