@@ -16,7 +16,6 @@ class RequestHelper: NSObject {
 
     /// Checks if the device has a network connection and then passes on the request to the appropriate HTTP method.
     /// - Parameters:
-    ///   - type: The HTTP method type.
     ///   - request: The network request object.
     ///   - completion: The completion block to return to the delegate class.
     static func addRequest(request: Request, completion: @escaping CompletionHandler) {
@@ -57,12 +56,10 @@ class RequestHelper: NSObject {
             if let json = response.value {
                 completion(true, json, nil)
             } else {
-                let error = RequestError(title: "Error", message: "Failed request!")
-                completion(false, nil, error)
+                completion(false, nil, RequestError(title: "Error", message: "Failed request!"))
             }
             
         case .failure(_):
-            let error = RequestError(title: "Error", message: "Failed request!")
             completion(false, nil, RequestError(title: "Error", message: "Failed request!"))
         }
     }

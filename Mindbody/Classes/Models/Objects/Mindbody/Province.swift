@@ -34,7 +34,7 @@ class Province: Mappable {
 extension Province {
     
     /// A JSON deserialization method without using third party libraries.
-    /// I wanted to include this to show my understanding of this logic outside of external frameworks.
+    /// I wanted to include this to show my understanding of deserialization logic outside of external frameworks.
     /// - Parameter json: The JSON to deserialize.
     func from(json: [String: Any]) {
         if let id = json["ID"] as? Int {

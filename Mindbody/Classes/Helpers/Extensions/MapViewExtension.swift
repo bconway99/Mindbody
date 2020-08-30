@@ -10,7 +10,7 @@ import MapKit
 
 extension MKMapView {
     
-    /// Resets the map view to view the entire world.
+    /// Resets the map view to show the entire world.
     func reset() {
         let worldRegion = MKCoordinateRegion(.world)
         region = worldRegion
