@@ -44,12 +44,22 @@ class CountryDetailsViewController: BaseViewController {
 
 extension CountryDetailsViewController {
     
+    /// This method is part of the superclass and does nothing unless overridden.
+    /// It helps provide a structured yet flexible architecture as we can choose whether we want to implement or not.
     override func setupAccessibility() {
+        super.setupAccessibility()
+        // We can use accessibility identifiers to help improve the experience for impaired users.
+        // These will help identify the UI for Apple’s VoiceOver to read over to the end user.
+        provincesTable?.accessibilityLabel = Constants.AccessibilityLabels.CountryDetailsViewController.provincesTable
+        refreshControl?.accessibilityLabel = Constants.AccessibilityLabels.CountryDetailsViewController.refreshControl
         provincesTable?.accessibilityIdentifier = Constants.AccessibilityIdentifiers.CountryDetailsViewController.provincesTable
         refreshControl?.accessibilityIdentifier = Constants.AccessibilityIdentifiers.CountryDetailsViewController.refreshControl
     }
     
+    /// This method is part of the superclass and does nothing unless overridden.
+    /// It helps provide a structured yet flexible architecture as we can choose whether we want to implement or not.
     override func setupObservers() {
+        super.setupObservers()
         // Clears the provinces array before setting it up as an observable.
         theProvinces.accept([])
         // Sets up the provinces array as an RxSwift observable.
