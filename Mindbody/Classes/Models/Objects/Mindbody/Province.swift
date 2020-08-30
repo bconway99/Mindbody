@@ -30,3 +30,24 @@ class Province: Mappable {
         countryCode     <- map["CountryCode"]
     }
 }
+
+extension Province {
+    
+    /// A JSON deserialization method without using third party libraries.
+    /// I wanted to include this to show my understanding of this logic outside of external frameworks.
+    /// - Parameter json: The JSON to deserialize.
+    func from(json: [String: Any]) {
+        if let id = json["ID"] as? Int {
+            self.id = id
+        }
+        if let name = json["Name"] as? String {
+            self.name = name
+        }
+        if let code = json["Code"] as? String {
+            self.code = code
+        }
+        if let countryCode = json["CountryCode"] as? String {
+            self.countryCode = countryCode
+        }
+    }
+}
