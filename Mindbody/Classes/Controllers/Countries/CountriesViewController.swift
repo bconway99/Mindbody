@@ -56,6 +56,10 @@ extension CountriesViewController: CountriesViewModelDelegate {
     }
     
     func didLoad(with error: RequestError?) {
+        let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
+            self?.viewModel.fetchCountries()
+        }
+        AlertHelper.showAlert(with: error?.title ?? "N/A", message: error?.message ?? "N/A", at: self, actions: [retry])
     }
 }
 
@@ -103,5 +107,21 @@ extension CountriesViewController: UITableViewDataSource, UITableViewDelegate {
         let country = theCountries.value[indexPath.row]
         cell.configure(with: country)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < theCountries.value.count else {
+            let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
+                self?.viewModel.fetchCountries()
+            }
+            AlertHelper.showAlert(with: "Error", message: "An error occured!", at: self, actions: [retry])
+            return
+        }
+        let viewModel = CountryDetailsViewModel()
+        viewModel.country = theCountries.value[indexPath.row]
+        if let viewController = storyboard?.instantiateViewController(withIdentifier: "CountryDetailsViewController") as? CountryDetailsViewController {
+            viewController.viewModel = viewModel
+            present(viewController, animated: true, completion: nil)
+        }
     }
 }

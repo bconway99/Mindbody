@@ -28,7 +28,7 @@ extension CountryCell {
         let flagURL = URL(string: String(format: Constants.CountryFlags.domain, flagEndpoint))
         // As part of the SDWebImage framework I could add a placeholder image until the target image is loaded.
         imageView?.sd_setImage(with: flagURL, completed: nil)
-        textLabel?.text = country.name ?? "N/A"
+        textLabel?.text = country.name?.capitalized ?? "N/A"
         selectionStyle = .none
     }
 }

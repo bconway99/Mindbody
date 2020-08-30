@@ -17,6 +17,7 @@ class Constants: NSObject {
         static let domain: String = "connect.mindbodyonline.com%@"
         class Endpoints {
             static let countries: String = "/rest/worldregions/country"
+            static let provinces: String = "/rest/worldregions/country/%@/province"
         }
     }
     
@@ -33,8 +34,13 @@ class Constants: NSObject {
     class AccessibilityIdentifiers {
         
         class CountriesViewController {
-            static let countriesTable: String = "CountriesTable"
-            static let refreshControl: String = "RefreshControl"
+            static let countriesTable: String = "CountriesViewController_CountriesTable"
+            static let refreshControl: String = "CountriesViewController_RefreshControl"
+        }
+        
+        class CountryDetailsViewController {
+            static let provincesTable: String = "CountryDetailsViewController_ProvincesTable"
+            static let refreshControl: String = "CountryDetailsViewController_RefreshControl"
         }
     }
 }
