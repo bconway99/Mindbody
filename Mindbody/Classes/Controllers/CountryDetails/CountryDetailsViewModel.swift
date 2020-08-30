@@ -13,7 +13,7 @@ import Handy
 protocol CountryDetailsViewModelDelegate: class {
     
     /// Called when the network call has returned successfully with the `province` objects.
-    func didLoad(with countries: [Province])
+    func didLoad(with province: [Province])
     
     /// Called when the network call has failed.
     func didLoad(with error: RequestError?)
