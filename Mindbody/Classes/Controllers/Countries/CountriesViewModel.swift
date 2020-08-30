@@ -45,7 +45,7 @@ class CountriesViewModel: BaseViewModel {
                 if let json = json, let countries = Mapper<Country>().mapArray(JSONObject: json), countries.count > 0 {
                     self?.delegate?.didLoad(with: countries)
                 } else {
-                    self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
+                    self?.delegate?.didLoad(with: RequestError(title: "No Countries", message: "No countries were returned!"))
                 }
                 break
                 
