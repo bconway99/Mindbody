@@ -38,6 +38,7 @@
 		D36CD95624FB12C5007F9365 /* ProvinceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD95424FB12C5007F9365 /* ProvinceCell.swift */; };
 		D36CD95724FB12C5007F9365 /* ProvinceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36CD95524FB12C5007F9365 /* ProvinceCell.xib */; };
 		D36CD95A24FB5055007F9365 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD95924FB5055007F9365 /* AlertHelper.swift */; };
+		D36CD96324FB5552007F9365 /* MapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD96224FB5552007F9365 /* MapViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		D36CD95424FB12C5007F9365 /* ProvinceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvinceCell.swift; sourceTree = "<group>"; };
 		D36CD95524FB12C5007F9365 /* ProvinceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProvinceCell.xib; sourceTree = "<group>"; };
 		D36CD95924FB5055007F9365 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		D36CD96224FB5552007F9365 /* MapViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,9 +316,18 @@
 		D36CD95824FB502F007F9365 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D36CD96124FB5541007F9365 /* Extensions */,
 				D36CD95924FB5055007F9365 /* AlertHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D36CD96124FB5541007F9365 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D36CD96224FB5552007F9365 /* MapViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +491,7 @@
 				D36CD94F24FAF84A007F9365 /* CountryDetailsViewController.swift in Sources */,
 				D36CD93A24FAC54D007F9365 /* CountriesViewController.swift in Sources */,
 				D36CD8E224F9D683007F9365 /* SceneDelegate.swift in Sources */,
+				D36CD96324FB5552007F9365 /* MapViewExtension.swift in Sources */,
 				D36CD93524FAC3A5007F9365 /* RequestHelper.swift in Sources */,
 				D36CD94824FAF02D007F9365 /* CountryCell.swift in Sources */,
 				D36CD93724FAC3AE007F9365 /* RequestType.swift in Sources */,

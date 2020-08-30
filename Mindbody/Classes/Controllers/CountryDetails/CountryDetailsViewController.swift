@@ -163,6 +163,9 @@ extension CountryDetailsViewController {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { [weak self] (placemarks, error) in
             guard let placemarks = placemarks, let location = placemarks.first?.location else {
+                // If we cannot find the correct location then reset the map.
+                // This logic can be greatly improved to be more user friendly.
+                self?.mapView?.reset()
                 return
             }
             self?.configureMap(with: location)
