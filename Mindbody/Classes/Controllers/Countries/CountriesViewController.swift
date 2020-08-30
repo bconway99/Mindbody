@@ -136,6 +136,6 @@ extension CountriesViewController: CountryCellDelegate {
     
     func imageLoaded(at row: Int) {
         let indexPath = IndexPath(row: row, section: 0)
-        countriesTable?.reloadRows(at: [indexPath], with: .automatic)
+        countriesTable?.reloadRows(at: [indexPath], with: .none)
     }
 }
