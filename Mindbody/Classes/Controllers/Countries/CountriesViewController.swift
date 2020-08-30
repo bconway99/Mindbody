@@ -52,10 +52,12 @@ extension CountriesViewController {
 extension CountriesViewController: CountriesViewModelDelegate {
 
     func didLoad(with countries: [Country]) {
+        countriesTable?.stopLoading()
         theCountries.accept(countries)
     }
     
     func didLoad(with error: RequestError?) {
+        countriesTable?.stopLoading()
         let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
             self?.viewModel.fetchCountries()
         }
@@ -73,6 +75,7 @@ extension CountriesViewController {
         if let refresh = refreshControl { countriesTable?.addSubview(refresh) }
         countriesTable?.separatorStyle = .singleLine
         countriesTable?.register(UINib(nibName: CountryCell.className, bundle: nil), forCellReuseIdentifier: CountryCell.identifier)
+        countriesTable?.showLoading(color: .gray, scale: 3.0)
     }
 }
 
