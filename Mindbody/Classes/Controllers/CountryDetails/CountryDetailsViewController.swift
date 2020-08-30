@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 import RxCocoa
 
 class CountryDetailsViewController: BaseViewController {
@@ -15,15 +16,27 @@ class CountryDetailsViewController: BaseViewController {
     var theProvinces: BehaviorRelay<[Province]> = BehaviorRelay(value: [])
 
     var refreshControl: UIRefreshControl?
+    @IBOutlet weak var mapView: MKMapView?
     @IBOutlet weak var provincesTable: UITableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
+        setupMapView()
         viewModel?.delegate = self
         viewModel?.setup()
         viewModel?.fetchProvinces()
         navigationBar?.title = viewModel?.country?.name ?? "N/A"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if
+            let name = viewModel?.country?.name?.capitalized,
+            let code = viewModel?.country?.code {
+            let address = String(format: "%@, %@", name, code)
+            getCoordinate(for: address)
+        }
     }
 }
 
@@ -72,6 +85,12 @@ extension CountryDetailsViewController {
         provincesTable?.separatorStyle = .singleLine
         provincesTable?.register(UINib(nibName: ProvinceCell.className, bundle: nil), forCellReuseIdentifier: ProvinceCell.identifier)
     }
+    
+    func setupMapView() {
+        mapView?.isZoomEnabled = false
+        mapView?.isScrollEnabled = false
+        mapView?.isUserInteractionEnabled = false
+    }
 }
 
 // MARK: - Actions
@@ -106,4 +125,40 @@ extension CountryDetailsViewController: UITableViewDataSource, UITableViewDelega
         cell.configure(with: province)
         return cell
     }
+}
+
+// MARK: - Map
+
+extension CountryDetailsViewController {
+    
+    func getCoordinate(for address: String) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { [weak self] (placemarks, error) in
+            guard let placemarks = placemarks, let location = placemarks.first?.location else {
+                return
+            }
+            self?.configureMap(with: location)
+        }
+    }
+    
+    func configureMap(with location: CLLocation) {
+        if let annotations = mapView?.annotations {
+            mapView?.removeAnnotations(annotations)
+        }
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        mapView?.addAnnotation(annotation)
+        
+        let coordinate = CLLocationCoordinate2D(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude)
+        mapView?.setCenter(coordinate, animated: true)
+    }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension CountryDetailsViewController: MKMapViewDelegate {
+    
+    
 }

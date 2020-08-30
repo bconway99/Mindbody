@@ -68,7 +68,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="iRf-ea-TfB"/>
+                                    <constraint firstAttribute="height" constant="44" id="vgp-GG-8PH"/>
                                 </constraints>
                                 <items>
                                     <navigationItem id="1IO-jt-Ktz">
@@ -81,34 +81,47 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Ou-vt-v1S">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="244" width="320" height="236"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="YeS-51-Dgn" id="y3J-aT-tEo"/>
                                     <outlet property="delegate" destination="YeS-51-Dgn" id="oDO-it-Nkl"/>
                                 </connections>
                             </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9ng-RV-hXu">
+                                <rect key="frame" x="0.0" y="44" width="320" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="tsz-Lq-amQ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="YeS-51-Dgn" id="GjS-UC-t4h"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="8Ou-vt-v1S" firstAttribute="leading" secondItem="YcH-QY-ind" secondAttribute="leading" id="2SN-m4-rfb"/>
-                            <constraint firstItem="YcH-QY-ind" firstAttribute="trailing" secondItem="8Ou-vt-v1S" secondAttribute="trailing" id="Dbm-FF-hx2"/>
-                            <constraint firstItem="R0V-E5-rk6" firstAttribute="top" secondItem="YcH-QY-ind" secondAttribute="top" id="JRa-VR-sMh"/>
-                            <constraint firstItem="8Ou-vt-v1S" firstAttribute="top" secondItem="R0V-E5-rk6" secondAttribute="bottom" id="gdU-GW-15L"/>
-                            <constraint firstItem="YcH-QY-ind" firstAttribute="bottom" secondItem="8Ou-vt-v1S" secondAttribute="bottom" id="izk-XI-fUP"/>
-                            <constraint firstItem="R0V-E5-rk6" firstAttribute="trailing" secondItem="YcH-QY-ind" secondAttribute="trailing" id="ujL-SG-m2o"/>
-                            <constraint firstItem="R0V-E5-rk6" firstAttribute="leading" secondItem="YcH-QY-ind" secondAttribute="leading" id="yk1-n3-Tlt"/>
+                            <constraint firstItem="9ng-RV-hXu" firstAttribute="trailing" secondItem="YcH-QY-ind" secondAttribute="trailing" id="2Ry-BB-lLg"/>
+                            <constraint firstItem="R0V-E5-rk6" firstAttribute="trailing" secondItem="YcH-QY-ind" secondAttribute="trailing" id="ELs-zb-bDL"/>
+                            <constraint firstItem="R0V-E5-rk6" firstAttribute="top" secondItem="YcH-QY-ind" secondAttribute="top" id="J65-qO-C3a"/>
+                            <constraint firstItem="8Ou-vt-v1S" firstAttribute="top" secondItem="9ng-RV-hXu" secondAttribute="bottom" id="WDm-oW-wAz"/>
+                            <constraint firstItem="8Ou-vt-v1S" firstAttribute="trailing" secondItem="YcH-QY-ind" secondAttribute="trailing" id="ZlQ-yf-HUm"/>
+                            <constraint firstItem="8Ou-vt-v1S" firstAttribute="leading" secondItem="YcH-QY-ind" secondAttribute="leading" id="faB-Wf-h1g"/>
+                            <constraint firstItem="9ng-RV-hXu" firstAttribute="leading" secondItem="YcH-QY-ind" secondAttribute="leading" id="kWQ-aK-qLL"/>
+                            <constraint firstItem="8Ou-vt-v1S" firstAttribute="bottom" secondItem="YcH-QY-ind" secondAttribute="bottom" id="pEp-ru-NHJ"/>
+                            <constraint firstItem="9ng-RV-hXu" firstAttribute="top" secondItem="R0V-E5-rk6" secondAttribute="bottom" id="slN-hn-SvO"/>
+                            <constraint firstItem="R0V-E5-rk6" firstAttribute="leading" secondItem="YcH-QY-ind" secondAttribute="leading" id="xOu-eX-WtT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YcH-QY-ind"/>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="9ng-RV-hXu" id="mxt-ER-Eoq"/>
                         <outlet property="navigationBar" destination="1IO-jt-Ktz" id="qdl-sK-0EP"/>
                         <outlet property="provincesTable" destination="8Ou-vt-v1S" id="mim-td-e9E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5W-hR-Jej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840" y="98"/>
+            <point key="canvasLocation" x="840" y="97.5"/>
         </scene>
     </scenes>
 </document>
