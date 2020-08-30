@@ -26,7 +26,7 @@ class CountryDetailsViewController: BaseViewController {
         viewModel?.delegate = self
         viewModel?.setup()
         viewModel?.fetchProvinces()
-        navigationBar?.title = viewModel?.country?.name ?? "N/A"
+        navigationBar?.title = viewModel?.country?.name?.capitalized ?? "N/A"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,11 +66,21 @@ extension CountryDetailsViewController {
 extension CountryDetailsViewController: CountryDetailsViewModelDelegate {
 
     func didLoad(with provinces: [Province]) {
+        guard provinces.count > 0 else {
+            let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
+                self?.viewModel?.fetchProvinces()
+            }
+            AlertHelper.showAlert(with: "No Provinces", message: "No provinces were returned!", at: self, actions: [retry])
+            return
+        }
         theProvinces.accept(provinces)
     }
     
     func didLoad(with error: RequestError?) {
-        // TODO: Show alert error.
+        let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
+            self?.viewModel?.fetchProvinces()
+        }
+        AlertHelper.showAlert(with: error?.title ?? "N/A", message: error?.message ?? "N/A", at: self, actions: [retry])
     }
 }
 
@@ -128,7 +138,10 @@ extension CountryDetailsViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row < theProvinces.value.count else {
-            // TODO: Show alert error.
+            let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
+                self?.viewModel?.fetchProvinces()
+            }
+            AlertHelper.showAlert(with: "Error", message: "An error occured!", at: self, actions: [retry])
             return
         }
         let province = theProvinces.value[indexPath.row]
@@ -150,7 +163,6 @@ extension CountryDetailsViewController {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { [weak self] (placemarks, error) in
             guard let placemarks = placemarks, let location = placemarks.first?.location else {
-                // TODO: Show alert error.
                 return
             }
             self?.configureMap(with: location)
@@ -170,11 +182,4 @@ extension CountryDetailsViewController {
             longitude: location.coordinate.longitude)
         mapView?.setCenter(coordinate, animated: true)
     }
-}
-
-// MARK: - MKMapViewDelegate
-
-extension CountryDetailsViewController: MKMapViewDelegate {
-    
-    
 }

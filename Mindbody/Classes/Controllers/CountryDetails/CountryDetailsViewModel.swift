@@ -48,7 +48,7 @@ class CountryDetailsViewModel: BaseViewModel {
             switch success {
                 
             case true:
-                if let json = json, let provinces = Mapper<Province>().mapArray(JSONObject: json), provinces.count > 0 {
+                if let json = json, let provinces = Mapper<Province>().mapArray(JSONObject: json) {
                     self?.delegate?.didLoad(with: provinces)
                 } else {
                     self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
