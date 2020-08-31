@@ -22,10 +22,11 @@ I decided to include a few dependencies within the project to streamline the log
 
 Below I have listed a few points which I could improve in this project.
 
+* I have implemented a few methods leveraging third party frameworks. However I have also replicated some of these methods without any external dependencies. My thinking behind including these was wanting to demonstrate my understanding of Apple's frameworks outside of leveraging third parties.
 * The **CLGeocoder** object sometimes struggled to retrieve locations for a specified address. I should implement some fail-safe logic to reduce the possibility of this, as well as error handling to clarify the issue to the user.
 * I should leverage thread management to the point where bigger tasks are created on a background thread and then redirected to the main thread once the UI needs updating.
 * I would add unit and UI testing for every aspect of the codebase, to make sure I’m following TDD (Test Driven Development) as much as possible.
 * Since we cannot develop everything on the production environment, targets would be added for each development environment in order to aim at the various domains, APIs and more.
-* I included a **Constants** file in the project which contains sensitive data such domains, endpoints and in a production project would also contain API keys. In a production project I would add this to the Gitignore file so that it’s never hosted in a repository. Then the Constants file could be shared between the development team in a more secure way. For this assessment I have included it in the repository so that it can be viewed by the team.
+* I included a **Constants** file in the project which contains sensitive data such as domains, endpoints and in a production project would also contain API keys. However in a production project I would add this to the Gitignore file so that it’s never hosted in a repository. Then the Constants file could be shared between the development team in a more secure way. For this assessment I have included it in the repository so that it can be viewed by the team.
 * Usually I would never hardcode strings and instead add them to a separate strings file, so that we can localize languages far more easily.
 * I can always include cleaner UI as well as animations.
