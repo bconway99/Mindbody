@@ -40,6 +40,7 @@
 		D36CD95A24FB5055007F9365 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD95924FB5055007F9365 /* AlertHelper.swift */; };
 		D36CD96324FB5552007F9365 /* MapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD96224FB5552007F9365 /* MapViewExtension.swift */; };
 		D36CD96524FB565D007F9365 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36CD96424FB565D007F9365 /* ViewExtension.swift */; };
+		D3DBA4A124FCB6E800BBE5C7 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DBA4A024FCB6E800BBE5C7 /* ImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		D36CD95924FB5055007F9365 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		D36CD96224FB5552007F9365 /* MapViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtension.swift; sourceTree = "<group>"; };
 		D36CD96424FB565D007F9365 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		D3DBA4A024FCB6E800BBE5C7 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +329,7 @@
 		D36CD96124FB5541007F9365 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D3DBA4A024FCB6E800BBE5C7 /* ImageExtension.swift */,
 				D36CD96224FB5552007F9365 /* MapViewExtension.swift */,
 				D36CD96424FB565D007F9365 /* ViewExtension.swift */,
 			);
@@ -491,6 +494,7 @@
 				D36CD92C24F9FF31007F9365 /* BaseViewController.swift in Sources */,
 				D36CD8E024F9D683007F9365 /* AppDelegate.swift in Sources */,
 				D36CD95124FAF859007F9365 /* CountryDetailsViewModel.swift in Sources */,
+				D3DBA4A124FCB6E800BBE5C7 /* ImageExtension.swift in Sources */,
 				D36CD94F24FAF84A007F9365 /* CountryDetailsViewController.swift in Sources */,
 				D36CD93A24FAC54D007F9365 /* CountriesViewController.swift in Sources */,
 				D36CD8E224F9D683007F9365 /* SceneDelegate.swift in Sources */,
