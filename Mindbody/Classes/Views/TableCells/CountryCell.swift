@@ -47,3 +47,23 @@ extension CountryCell {
         selectionStyle = .none
     }
 }
+
+// MARK: - Image
+
+extension CountryCell {
+    
+    /// The following method is not used anywhere in the project.
+    /// My thinking behind including it was wanting to demonstrate my understanding of Apple's frameworks outside of leveraging third parties.
+    /// Below is how I would likely convert the flag image URL to a UIImage if I chose not to include `SDWebImage`.
+    func loadImage(from url: URL, row: Int) {
+        // Do this in a separate class to better conform to MVVM.
+        do {
+            let image = try UIImage(with: url)
+            imageView?.image = image
+            imageView?.contentMode = .scaleAspectFit
+            self.delegate?.imageLoaded(at: row)
+        } catch {
+            // In a production application we could show a placeholder image in the event of a failure.
+        }
+    }
+}

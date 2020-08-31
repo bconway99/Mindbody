@@ -79,6 +79,40 @@ extension RequestHelper {
             return parseResponse(with: response, completion: completion)
         }
     }
+    
+    /// The following method is not used anywhere in the project.
+    /// My thinking behind including it was wanting to demonstrate my understanding of Apple's frameworks outside of leveraging third parties.
+    /// Below is how I would likely make a similar network request if I chose not to include `Alamofire`.
+    static func getData(with request: Request, completion: @escaping CompletionHandler) {
+        guard let url = URL(string: request.url ?? "") else {
+            return /*parseResponse()*/
+        }
+        
+        // Run on a background thread.
+        DispatchQueue.global(qos: .background).async {
+            var urlRequest = URLRequest(
+                url: url,
+                cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
+                timeoutInterval: 10)
+            urlRequest.httpMethod = "GET"
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+                // Run back on the main thread.
+                DispatchQueue.main.async {
+                    if let error = error { return /*parseResponse()*/ }
+                    // By allowing the view model to handle this data it means that we can parse the response in accordance with the expected result.
+                    // For example some endpoints might return a JSON dictionary whereas others a JSON array.
+                    guard
+                        let responseData = data,
+                        let httpResponse = response as? HTTPURLResponse,
+                        200 ..< 300 ~= httpResponse.statusCode else {
+                            return /*parseResponse()*/
+                    }
+                    return /*parseResponse()*/
+                }
+            }
+            dataTask.resume()
+        }
+    }
 }
 
 // MARK: - Post
