@@ -8,12 +8,10 @@
 
 import UIKit
 import MapKit
-import RxCocoa
 
 class CountryDetailsViewController: BaseViewController {
     
     var viewModel: CountryDetailsViewModel?
-    var theProvinces: BehaviorRelay<[Province]> = BehaviorRelay(value: [])
 
     var refreshControl: UIRefreshControl?
     @IBOutlet weak var mapView: MKMapView?
@@ -61,10 +59,10 @@ extension CountryDetailsViewController {
     override func setupObservers() {
         super.setupObservers()
         // Clears the provinces array before setting it up as an observable.
-        theProvinces.accept([])
+        viewModel?.provinces.accept([])
         // Sets up the provinces array as an RxSwift observable.
         // Along with a completion block that executes whenever this object changes.
-        theProvinces.asObservable().subscribe(onNext: { [weak self] items in
+        viewModel?.provinces.asObservable().subscribe(onNext: { [weak self] items in
             self?.provincesTable?.reloadData()
             self?.refreshControl?.endRefreshing()
         }).disposed(by: disposeBag)
@@ -74,27 +72,26 @@ extension CountryDetailsViewController {
 // MARK: - CountryDetailsViewModelDelegate
 
 extension CountryDetailsViewController: CountryDetailsViewModelDelegate {
-
-    func didLoad(with provinces: [Province]) {
+    
+    func didLoadData() {
         provincesTable?.stopLoading()
         mapView?.stopLoading()
-        guard provinces.count > 0 else {
+        guard let provinces = viewModel?.provinces.value, provinces.count > 0 else {
             let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
                 self?.viewModel?.fetchProvinces()
             }
             AlertHelper.showAlert(with: "No Provinces", message: "No provinces were returned!", at: self, actions: [retry])
             return
         }
-        theProvinces.accept(provinces)
     }
     
-    func didLoad(with error: RequestError?) {
+    func didLoadError(with title: String?, message: String?) {
         provincesTable?.stopLoading()
         mapView?.stopLoading()
         let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
             self?.viewModel?.fetchProvinces()
         }
-        AlertHelper.showAlert(with: error?.title ?? "N/A", message: error?.message ?? "N/A", at: self, actions: [retry])
+        AlertHelper.showAlert(with: title ?? "N/A", message: message ?? "N/A", at: self, actions: [retry])
     }
 }
 
@@ -137,30 +134,33 @@ extension CountryDetailsViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard theProvinces.value.count > 0 else { return 0 }
-        return theProvinces.value.count
+        guard let provinces = viewModel?.provinces.value, provinces.count > 0 else { return 0 }
+        return provinces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
-            indexPath.row < theProvinces.value.count,
+            let provinces = viewModel?.provinces.value,
+            indexPath.row < provinces.count,
             let cell = tableView.dequeueReusableCell(withIdentifier: ProvinceCell.identifier, for: indexPath) as? ProvinceCell else {
             return UITableViewCell()
         }
-        let province = theProvinces.value[indexPath.row]
+        let province = provinces[indexPath.row]
         cell.configure(with: province)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.row < theProvinces.value.count else {
+        guard
+            let provinces = viewModel?.provinces.value,
+            indexPath.row < provinces.count else {
             let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
                 self?.viewModel?.fetchProvinces()
             }
             AlertHelper.showAlert(with: "Error", message: "An error occured!", at: self, actions: [retry])
             return
         }
-        let province = theProvinces.value[indexPath.row]
+        let province = provinces[indexPath.row]
         if
             let provinceName = province.name,
             let countryName = viewModel?.country?.name?.capitalized,

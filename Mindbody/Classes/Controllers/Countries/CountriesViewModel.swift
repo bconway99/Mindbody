@@ -8,20 +8,19 @@
 
 import Foundation
 import ObjectMapper
+import RxCocoa
 import Handy
 
-protocol CountriesViewModelDelegate: class {
-    
-    /// Called when the network call has returned successfully with the `country` objects.
-    func didLoad(with countries: [Country])
+protocol CountriesViewModelDelegate: BaseViewModelDelegate {
     
     /// Called when the network call has failed.
-    func didLoad(with error: RequestError?)
+    func didLoadError(with title: String?, message: String?)
 }
 
 class CountriesViewModel: BaseViewModel {
     
     weak var delegate: CountriesViewModelDelegate?
+    var countries: BehaviorRelay<[Country]> = BehaviorRelay(value: [])
     
     override func setup() {
         super.setup()
@@ -43,14 +42,15 @@ class CountriesViewModel: BaseViewModel {
                 
             case true:
                 if let json = json, let countries = Mapper<Country>().mapArray(JSONObject: json), countries.count > 0 {
-                    self?.delegate?.didLoad(with: countries)
+                    self?.countries.accept(countries)
+                    self?.delegate?.didLoadData()
                 } else {
-                    self?.delegate?.didLoad(with: RequestError(title: "No Countries", message: "No countries were returned!"))
+                    self?.delegate?.didLoadError(with: "No Countries", message: "No countries were returned!")
                 }
                 break
                 
             case false:
-                self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
+                self?.delegate?.didLoadError(with: "Error", message: "Failed request!")
                 break
             }
         }

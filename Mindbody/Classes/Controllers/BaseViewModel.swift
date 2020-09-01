@@ -8,6 +8,12 @@
 
 import Foundation
 
+protocol BaseViewModelDelegate: class {
+        
+    /// Called when the network call has returned successfully with the `data` for a view model.
+    func didLoadData()
+}
+
 class BaseViewModel: NSObject {
         
     // Add here any base logic setup.
