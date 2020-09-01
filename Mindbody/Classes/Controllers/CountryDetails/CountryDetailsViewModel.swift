@@ -8,20 +8,19 @@
 
 import Foundation
 import ObjectMapper
+import RxCocoa
 import Handy
 
-protocol CountryDetailsViewModelDelegate: class {
-    
-    /// Called when the network call has returned successfully with the `province` objects.
-    func didLoad(with province: [Province])
+protocol CountryDetailsViewModelDelegate: BaseViewModelDelegate {
     
     /// Called when the network call has failed.
-    func didLoad(with error: RequestError?)
+    func didLoadError(with title: String?, message: String?)
 }
 
 class CountryDetailsViewModel: BaseViewModel {
     
     weak var delegate: CountryDetailsViewModelDelegate?
+    var provinces: BehaviorRelay<[Province]> = BehaviorRelay(value: [])
     var country: Country?
     
     override func setup() {
@@ -31,7 +30,7 @@ class CountryDetailsViewModel: BaseViewModel {
     /// Fetches the list of Mindbody provinces from the API endpoint.
     func fetchProvinces() {
         guard let countryID = country?.id else {
-            delegate?.didLoad(with: RequestError(title: "Error", message: "Invalid country object!"))
+            delegate?.didLoadError(with: "Error", message: "Invalid country object!")
             return
         }
                 
@@ -49,14 +48,15 @@ class CountryDetailsViewModel: BaseViewModel {
                 
             case true:
                 if let json = json, let provinces = Mapper<Province>().mapArray(JSONObject: json) {
-                    self?.delegate?.didLoad(with: provinces)
+                    self?.provinces.accept(provinces)
+                    self?.delegate?.didLoadData()
                 } else {
-                    self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
+                    self?.delegate?.didLoadError(with: "Error", message: "Failed request!")
                 }
                 break
                 
             case false:
-                self?.delegate?.didLoad(with: RequestError(title: "Error", message: "Failed request!"))
+                self?.delegate?.didLoadError(with: "Error", message: "Failed request!")
                 break
             }
         }
