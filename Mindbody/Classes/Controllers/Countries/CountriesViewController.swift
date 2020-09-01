@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import RxCocoa
 
 class CountriesViewController: BaseViewController {
     
     let viewModel = CountriesViewModel()
-    var theCountries: BehaviorRelay<[Country]> = BehaviorRelay(value: [])
-
+    
     var refreshControl: UIRefreshControl?
     @IBOutlet weak var countriesTable: UITableView?
 
@@ -47,10 +45,10 @@ extension CountriesViewController {
     override func setupObservers() {
         super.setupObservers()
         // Clears the countries array before setting it up as an observable.
-        theCountries.accept([])
+        viewModel.countries.accept([])
         // Sets up the countries array as an RxSwift observable.
         // Along with a completion block that executes whenever this object changes.
-        theCountries.asObservable().subscribe(onNext: { [weak self] items in
+        viewModel.countries.asObservable().subscribe(onNext: { [weak self] items in
             self?.countriesTable?.reloadData()
             self?.refreshControl?.endRefreshing()
         }).disposed(by: disposeBag)
@@ -60,18 +58,17 @@ extension CountriesViewController {
 // MARK: - CountriesViewModelDelegate
 
 extension CountriesViewController: CountriesViewModelDelegate {
-
-    func didLoad(with countries: [Country]) {
+    
+    func didLoadData() {
         countriesTable?.stopLoading()
-        theCountries.accept(countries)
     }
     
-    func didLoad(with error: RequestError?) {
+    func didLoadError(with title: String?, message: String?) {
         countriesTable?.stopLoading()
         let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
             self?.viewModel.fetchCountries()
         }
-        AlertHelper.showAlert(with: error?.title ?? "N/A", message: error?.message ?? "N/A", at: self, actions: [retry])
+        AlertHelper.showAlert(with: title ?? "N/A", message: message ?? "N/A", at: self, actions: [retry])
     }
 }
 
@@ -107,34 +104,34 @@ extension CountriesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard theCountries.value.count > 0 else { return 0 }
-        return theCountries.value.count
+        guard viewModel.countries.value.count > 0 else { return 0 }
+        return viewModel.countries.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
-            indexPath.row < theCountries.value.count,
+            indexPath.row < viewModel.countries.value.count,
             let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.identifier, for: indexPath) as? CountryCell else {
             return UITableViewCell()
         }
-        let country = theCountries.value[indexPath.row]
+        let country = viewModel.countries.value[indexPath.row]
         cell.delegate = self
         cell.configure(with: country, row: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.row < theCountries.value.count else {
+        guard indexPath.row < viewModel.countries.value.count else {
             let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] (action: UIAlertAction) in
                 self?.viewModel.fetchCountries()
             }
             AlertHelper.showAlert(with: "Error", message: "An error occured!", at: self, actions: [retry])
             return
         }
-        let viewModel = CountryDetailsViewModel()
-        viewModel.country = theCountries.value[indexPath.row]
+        let detailsViewModel = CountryDetailsViewModel()
+        detailsViewModel.country = viewModel.countries.value[indexPath.row]
         if let viewController = storyboard?.instantiateViewController(withIdentifier: "CountryDetailsViewController") as? CountryDetailsViewController {
-            viewController.viewModel = viewModel
+            viewController.viewModel = detailsViewModel
             present(viewController, animated: true, completion: nil)
         }
     }
